@@ -36,6 +36,10 @@ If both hardware and software are properly setup, you should be able to invoke L
 roslaunch livox_ros_driver2 rviz_MID360.launch
 ```
 
+Caveats (坑) and tips:
+
+1. Though the Livox SDK says that the lidar can be automatically detected via UDP broadcast, in my case, I had to use manual IP setting to set the IP address of the network interface connceted to the lidar to `192.168.1.5`, which I found [here](https://github.com/Livox-SDK/livox_ros_driver2/blob/b6ff7d1c8b210a96b74e919823771e1e32249758/config/MID360_config.json#L14). The lidar IP address in my case was `192.168.1.188`.
+
 ## Running localization
 
 ### Mode 1: FAST-LIO-only
@@ -58,7 +62,7 @@ roslaunch fast_lio_sam_qn run.launch lidar:=livox
 
 After the mapping is complete. Do `Ctrl+C` once. If both `save_map_pcd` and `save_map_bag` flags are true (see tips below), the built map and keyframes will be saved to the project directory of `FAST_LIO_SAM_QN`, which in my case is `~/mid360_ws/src/mid360_localization/FAST-LIO-SAM-QN/fast_lio_sam_qn`.
 
-There are some caveats (坑) that I've run into here. Some tips as well
+There are some caveats that I've run into here. Some tips as well
 
 1. The config files provided by the SAM_QN and the LOCALIZATION_QN files are obsolete and do not work with livox mid 360.
    I have updated the config in these two commits to customize these two repos to work with livox mid 360.
@@ -86,8 +90,6 @@ Then, run,
 roslaunch fast_lio_localization_qn run.launch lidar:=livox
 ```
 
-Caveats (坑) for mode 3:
+Caveats and tips for mode 3:
 
-- The localization may not work in the beginning. It requires some form of initialization (in my case, I have to move the robot arund for ~1m). From the RVIZ, before the localization is properly initialized, the RVIZ is dark. After initialization, you should be able to see the whole pre-built map.
-- 
-
+1. The localization may not work in the beginning. It requires some form of initialization (in my case, I have to move the robot arund for ~1m). From the RVIZ, before the localization is properly initialized, the RVIZ is dark. After initialization, you should be able to see the whole pre-built map.
