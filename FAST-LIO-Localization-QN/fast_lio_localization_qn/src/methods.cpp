@@ -182,6 +182,9 @@ void FastLioLocalizationQnClass::loadMap(const std::string& saved_map_path)
     m_saved_map.push_back(PosePcdReduced(load_pose_vec_[i], load_pcd_vec_[i], i));
     m_saved_map_pcd += transformPcd(m_saved_map[i].pcd, m_saved_map[i].pose_eig);
   }
+  // print number of keyframes
+  ROS_INFO("Loaded %d keyframes from %s", m_saved_map.size(), saved_map_path.c_str());
+
   voxelizePcd(m_voxelgrid, m_saved_map_pcd);
   bag_.close();
   return;

@@ -93,6 +93,7 @@ FastLioLocalizationQnClass::FastLioLocalizationQnClass(const ros::NodeHandle& n_
   m_quatro_handler = std::make_shared<quatro<PointType>>(fpfh_normal_radius_, fpfh_radius_, noise_bound_, rot_gnc_factor_, rot_cost_diff_thr_,
                                                         quatro_max_iter_, estimat_scale_, use_optimized_matching_, quatro_distance_threshold_, quatro_max_corres_);
   // Load map
+  ROS_WARN("Loading map from %s...", saved_map_path_.c_str());
   loadMap(saved_map_path_);
 
   ////// ROS things
