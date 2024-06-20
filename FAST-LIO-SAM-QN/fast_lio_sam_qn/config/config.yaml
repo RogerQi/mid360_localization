@@ -9,7 +9,7 @@ keyframe:
 
 loop:
   loop_detection_radius: 35.0                 # unit [meter] within this radius, check if loop or not
-  loop_detection_timediff_threshold: 30.0     # unit [sec] check if two keyframes are loop if times are farther than this
+  loop_detection_timediff_threshold: 9999999.0     # unit [sec] check if two keyframes are loop if times are farther than this
 
 quatro_nano_gicp_voxel_resolution: 0.3        # voxel resolution to use Quatro and Nano-GICP matching
 
