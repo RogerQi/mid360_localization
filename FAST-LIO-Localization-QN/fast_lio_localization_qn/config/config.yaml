@@ -1,7 +1,7 @@
 basic:
   map_frame: "map"                            # publish frame
   map_match_hz: 2.0                           # Map match Hz
-  saved_map: "/home/mason/kitti05.bag"        # directory should be in absolute path
+  saved_map: "/home/jerrywang/mid360_ws/src/mid360_localization/FAST-LIO-SAM-QN/fast_lio_sam_qn/floor1.bag"        # directory should be in absolute path
 
 keyframe:
   keyframe_threshold: 1.5                     # unit [meter] every this distance, generate keyframe
